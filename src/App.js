@@ -1,29 +1,17 @@
-import { useReducer } from "react";
+import { createContext, useReducer } from "react";
 import "./App.css";
+import Code1 from "./components/code1";
+export const x1 = createContext()
+export const x2 = createContext()
 
 function App() {
-  const initialState = 0;
-
-  const reducer = (state, action) => {
-    switch (action) {
-      case "inc":
-        return state + 1;
-      case "dec":
-        return state - 1;
-      case "reset":
-        return initialState ;
-      default:
-        return state;
-    }
-  };
-
-  const [state, dispatch] = useReducer(reducer, initialState)
-
+  
   return <div className="App">
-    <h2>{state}</h2>
-    <button onClick={()=>{dispatch('inc')}}>+</button>
-    <button onClick={()=>{dispatch('dec')}}>-</button>
-    <button onClick={()=>{dispatch('reset')}}>Reset</button>
+  <x1.Provider value={'marwa'}>
+    <x2.Provider value={'refaieh'}>
+      <Code1/>
+    </x2.Provider>
+  </x1.Provider>
   </div>;
 }
 
